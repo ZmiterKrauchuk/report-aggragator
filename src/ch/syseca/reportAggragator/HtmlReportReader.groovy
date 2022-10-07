@@ -1,5 +1,6 @@
 package ch.syseca.reportAggragator
 @Grab('org.jsoup:jsoup:1.10.2')
+@Grab('org.w3c:dom:2.3.0-jaxb-1.0.6')
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
