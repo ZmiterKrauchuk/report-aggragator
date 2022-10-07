@@ -16,7 +16,7 @@ class ReportAggregator {
         log.info ("createReport started")
 
         setUpHtmlReportReaderWriter()
-        //HtmlReportReader.read()
+        HtmlReportReader.read()
 
         HtmlReportWriter.write()
 

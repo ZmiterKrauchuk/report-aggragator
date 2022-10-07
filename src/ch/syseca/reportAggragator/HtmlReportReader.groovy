@@ -51,7 +51,7 @@ class HtmlReportReader {
     private static void parseDependencies(Document doc) {
         Elements sections = doc.select(rootElementName)
 
-        sections.each { element -> addNodeItems(element) }
+        //sections.each { element -> addNodeItems(element) }
     }
 
     private static void addNodeItems(Element s) {
