@@ -12,6 +12,8 @@ import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
+import java.nio.file.attribute.BasicFileAttributes
+import java.util.function.BiPredicate
 import java.util.stream.Collectors
 
 class HtmlReportReader {
@@ -38,8 +40,8 @@ class HtmlReportReader {
         })
     }
 
-    private static Closure<Boolean> fileNameMatcher() {
-            (path) -> path.endsWith(fileName)
+    private static BiPredicate<Path, BasicFileAttributes> fileNameMatcher() {
+            (path, attrs) -> path.endsWith(fileName)
     }
 
     private static Document readAsDocument(Path path) throws IOException {
