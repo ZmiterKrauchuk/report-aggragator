@@ -21,14 +21,14 @@ class HtmlReportReader {
     static final Set<ReportItem> reportItems = new HashSet<>()
 
     static void read() throws IOException {
-        System.out.println("HtmlReportReader start")
+        println "HtmlReportReader start"
         reportItems.removeAll(reportItems)
 
         File dir = new File(inputDirectory)
         String absolutePath = dir.getAbsolutePath()
         Path input = Paths.get(absolutePath)
 
-        Files.find(input, 100, fileNameMatcher()).each{ file ->
+        Files.find(input, 100, fileNameMatcher()).each { file ->
             try {
                 parseDependencies(readAsDocument(file))
             } catch (Exception e) {
@@ -51,7 +51,7 @@ class HtmlReportReader {
     private static void parseDependencies(Document doc) {
         Elements sections = doc.select(rootElementName)
 
-        sections.each{ element -> addNodeItems(element) }
+        sections.each { element -> addNodeItems(element) }
     }
 
     private static void addNodeItems(Element s) {
@@ -68,7 +68,7 @@ class HtmlReportReader {
         Map<Integer, Elements> extraVals = new HashMap<>() // for those nodes, which have children (Licenses)
 
         node.children()
-                .each{ childNode ->
+                .each { childNode ->
                     elements.put(headerIndexes.get(childNode.siblingIndex()), getValue(childNode, extraVals))
                 }
 
