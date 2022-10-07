@@ -29,7 +29,7 @@ import java.util.stream.Collectors
             String absolutePath = dir.getAbsolutePath()
             Path input = Paths.get(absolutePath)
 
-            Files.find(input, 100, fileNameMatcher()).forEach(file -> {
+            Files.find(input, 100, fileNameMatcher()).forEach(  (Path file) -> {
 
                 try {
                     parseDependencies(readAsDocument(file))
