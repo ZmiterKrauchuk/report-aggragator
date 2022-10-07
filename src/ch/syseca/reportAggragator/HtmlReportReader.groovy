@@ -39,7 +39,7 @@ class HtmlReportReader {
     }
 
     private static Closure<Boolean> fileNameMatcher() {
-            (path, attrs) -> path.endsWith(fileName)
+            (path) -> path.endsWith(fileName)
     }
 
     private static Document readAsDocument(Path path) throws IOException {
