@@ -28,13 +28,13 @@ class HtmlReportReader {
         String absolutePath = dir.getAbsolutePath()
         Path input = Paths.get(absolutePath)
 
-        Files.find(input, 100, fileNameMatcher()).forEach({ file ->
+        Files.find(input, 100, fileNameMatcher()).each{ file ->
             try {
                 parseDependencies(readAsDocument(file))
             } catch (Exception e) {
                 e.printStackTrace()
             }
-        })
+        }
     }
 
     private static BiPredicate<Path, BasicFileAttributes> fileNameMatcher() {
@@ -51,7 +51,7 @@ class HtmlReportReader {
     private static void parseDependencies(Document doc) {
         Elements sections = doc.select(rootElementName)
 
-        sections.forEach({ element -> addNodeItems(element) })
+        sections.each{ element -> addNodeItems(element) }
     }
 
     private static void addNodeItems(Element s) {
@@ -68,9 +68,9 @@ class HtmlReportReader {
         Map<Integer, Elements> extraVals = new HashMap<>() // for those nodes, which have children (Licenses)
 
         node.children()
-                .forEach({ childNode ->
+                .each{ childNode ->
                     elements.put(headerIndexes.get(childNode.siblingIndex()), getValue(childNode, extraVals))
-                })
+                }
 
         applyData(elements)
 
