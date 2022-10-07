@@ -41,7 +41,7 @@ class HtmlReportReader {
     }
 
     private static BiPredicate<Path, BasicFileAttributes> fileNameMatcher() {
-            (path, attrs) -> path.endsWith(fileName)
+            (path)  -> path.endsWith(fileName)
     }
 
     private static Document readAsDocument(Path path) throws IOException {
