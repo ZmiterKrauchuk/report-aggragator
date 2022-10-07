@@ -1,11 +1,12 @@
 package ch.syseca.reportAggragator
 @Grab('org.jsoup:jsoup:1.10.2')
-@Grab('org.w3c:dom:2.3.0-jaxb-1.0.6')
+@Grab('xml-apis:xml-apis:1.4.01')
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
+import org.w3c.dom.ElementTraversal
 
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
