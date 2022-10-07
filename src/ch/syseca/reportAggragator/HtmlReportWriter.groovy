@@ -70,7 +70,7 @@ class HtmlReportWriter {
         List<String> list = new ArrayList<>(raw)
         Collections.sort(list)
         if (list.get(0) != "null") {
-            return join(list, "<br/>")
+            return list.join("<br/>")
         } else {
             return "-"
         }
@@ -84,22 +84,11 @@ class HtmlReportWriter {
     }
 
     private static String createKeyHeader() {
-        return join(ReportItem.keyHeader, " : ")
+        return ReportItem.keyHeader.join(" : ")
     }
 
     private static String createValueHeader() {
-        return join(ReportItem.valueHeader, " : ")
+        return ReportItem.valueHeader.join(" : ")
     }
 
-    private static String join(Collection var0, String var1) {
-        StringBuffer var2 = new StringBuffer()
-
-        for (Iterator var3 = var0.iterator(); var3.hasNext(); var2.append((String) var3.next())) {
-            if (var2.length() != 0) {
-                var2.append(var1)
-            }
-        }
-
-        return var2.toString()
-    }
 }
