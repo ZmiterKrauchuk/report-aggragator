@@ -75,7 +75,7 @@ class HtmlReportReader {
         applyData(elements)
 
         if (extraVals.keySet().size() > 0) {
-            for (Elements e : extraVals.values()) {
+            for (Elements e in extraVals.values()) {
                 elements.put(headerIndexes.get(extraVals.keySet().iterator().next()), getValue(e.first(), extraVals))
                 applyData(elements)
             }
@@ -88,7 +88,7 @@ class HtmlReportReader {
         String valueData = ReportItem.createData(elements, ReportItem.valueHeader)
 
         Map<String, ReportItem> searchNodes = new HashMap<>()
-        for (ReportItem item : reportItems) {
+        for (ReportItem item in reportItems) {
             searchNodes.put(item.keyData, item)
         }
 
@@ -131,7 +131,7 @@ class HtmlReportReader {
 
     private static Map<Integer, String> getActualOrderOfHeaderItems(Element s) {
         Map<Integer, String> actualOrderOfHeaderItems = new HashMap<>()
-        for (Element child : s.child(0).children()) {
+        for (Element child in s.child(0).children()) {
             actualOrderOfHeaderItems.put(child.siblingIndex(), getValue(child, null))
         }
 

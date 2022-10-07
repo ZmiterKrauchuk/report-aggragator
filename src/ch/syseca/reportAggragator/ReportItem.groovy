@@ -8,7 +8,7 @@ class ReportItem implements Comparable<ReportItem> {
     final Set<String> valueData = new HashSet<>()
 
     boolean hasExcludedItems(Set<String> excludedItems) {
-        for (String exItem : excludedItems) {
+        for (String exItem in excludedItems) {
             if (this.keyData.contains(exItem)) {
                 return true
             }
@@ -18,7 +18,7 @@ class ReportItem implements Comparable<ReportItem> {
 
     static String createData(Map<String, String> elements, Set<String> header) {
         StringBuilder sb = new StringBuilder()
-        for (String item : header) {
+        for (String item in header) {
             sb.append(elements.get(item))
             sb.append(" : ")
         }
