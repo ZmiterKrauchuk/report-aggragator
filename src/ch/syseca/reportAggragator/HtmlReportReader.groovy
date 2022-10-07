@@ -1,9 +1,5 @@
 package ch.syseca.reportAggragator
 
-@Grab('xml-apis:xml-apis:1.4.01')
-@Grab('org.jsoup:jsoup:1.10.2')
-
-import org.w3c.dom.ElementTraversal
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
