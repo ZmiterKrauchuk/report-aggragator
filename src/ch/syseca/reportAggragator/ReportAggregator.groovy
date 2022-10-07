@@ -1,8 +1,5 @@
 package ch.syseca.reportAggragator
 
-import groovy.util.logging.Log
-
-@Log
 class ReportAggregator {
     static Set<String> keyHeaderParam = new LinkedHashSet<>()
     static Set<String> valueHeaderParam = new LinkedHashSet<>()
@@ -13,7 +10,6 @@ class ReportAggregator {
     static String outputFileParam = "licenses.html"
 
     static void createReport() throws Exception {
-        log.info ("createReport started")
 
         setUpHtmlReportReaderWriter()
         HtmlReportReader.read()
