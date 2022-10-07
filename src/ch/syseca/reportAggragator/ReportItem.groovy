@@ -58,6 +58,7 @@ class ReportItem implements Comparable<ReportItem> {
     }
 
     @Override
+    @NonCPS
     int compareTo(ReportItem o) {
         return keyData <=> o.keyData
     }

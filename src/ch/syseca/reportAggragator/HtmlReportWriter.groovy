@@ -22,8 +22,12 @@ class HtmlReportWriter {
     private static Set<ReportItem> reportItems = HtmlReportReader.reportItems
 
     private static List<ReportItem> getSortedReportItems() {
-        List<ReportItem> list = new ArrayList<>(reportItems)
-        Collections.sort(list)
+        def list = []
+        list.addAll(reportItems)
+        def sortKeyData = { ob1, ob2 -> ob1.keyData <=> ob2.keyData }
+
+        list.sort(sortKeyData)
+
         return list
     }
 
@@ -55,7 +59,7 @@ class HtmlReportWriter {
     }
 
     private static void addAllItems(StringBuilder sb) {
-        getSortedReportItems().each{ i -> addOneItem(i, sb) }
+        getSortedReportItems().each { i -> addOneItem(i, sb) }
     }
 
     private static void addOneItem(ReportItem item, StringBuilder sb) {
@@ -66,9 +70,11 @@ class HtmlReportWriter {
     }
 
     private static String getSortedValueData(ReportItem item) {
-        Set<String> raw = item.valueData
-        List<String> list = new ArrayList<>(raw)
-        list = list.sort { it.size() }
+        def list = []
+        list.addAll(item.valueData)
+
+        list = list.sort()
+
         if (list.get(0) != "null") {
             return list.join("<br/>")
         } else {
