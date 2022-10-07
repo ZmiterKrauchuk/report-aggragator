@@ -2,6 +2,8 @@ import ch.syseca.reportAggragator.ReportAggregator
 
 static def createReport(){
     ReportAggregator.createReport()
+    echo("This is echo log")
+    println("This is println log")
 }
 
 static def setProjectHomeDir(String path){
