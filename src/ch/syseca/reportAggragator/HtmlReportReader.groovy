@@ -1,7 +1,8 @@
 package ch.syseca.reportAggragator
 @Grab('org.jsoup:jsoup:1.10.2')
-@Grab('xml-apis:xml-apis:1.4.01')
 
+
+import org.w3c.dom.ElementTraversal
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
@@ -23,6 +24,7 @@ class HtmlReportReader {
     static final Set<ReportItem> reportItems = new HashSet<>()
 
     static void read() throws IOException {
+        System.out.println("HtmlReportReader start")
         reportItems.removeAll(reportItems)
 
         File dir = new File(inputDirectory)
