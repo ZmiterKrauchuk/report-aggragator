@@ -1,11 +1,9 @@
 package ch.syseca.reportAggragator
-
 @Grab('org.jsoup:jsoup:1.10.2')
 
 import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
-import org.jsoup.nodes.Node
 import org.jsoup.select.Elements
 
 import java.nio.charset.StandardCharsets
@@ -14,7 +12,6 @@ import java.nio.file.Path
 import java.nio.file.Paths
 import java.nio.file.attribute.BasicFileAttributes
 import java.util.function.BiPredicate
-import java.util.stream.Collectors
 
 class HtmlReportReader {
 
@@ -54,7 +51,7 @@ class HtmlReportReader {
     private static void parseDependencies(Document doc) {
         Elements sections = doc.select(rootElementName)
 
-        sections.forEach(HtmlReportReader::addNodeItems)
+        sections.forEach({ element -> addNodeItems(element) })
     }
 
     private static void addNodeItems(Element s) {
@@ -71,8 +68,9 @@ class HtmlReportReader {
         Map<Integer, Elements> extraVals = new HashMap<>() // for those nodes, which have children (Licenses)
 
         node.children()
-                .forEach(childNode ->
-                        elements.put(headerIndexes.get(childNode.siblingIndex()), getValue(childNode, extraVals)))
+                .forEach({ childNode ->
+                    elements.put(headerIndexes.get(childNode.siblingIndex()), getValue(childNode, extraVals))
+                })
 
         applyData(elements)
 
@@ -132,9 +130,12 @@ class HtmlReportReader {
     }
 
     private static Map<Integer, String> getActualOrderOfHeaderItems(Element s) {
-        return s.child(0).children().stream()
-                .collect(Collectors.toMap(Node::siblingIndex,
-                        td -> getValue(td as Element, null)))
+        Map<Integer, String> actualOrderOfHeaderItems = new HashMap<>()
+        for (Element child : s.child(0).children()) {
+            actualOrderOfHeaderItems.put(child.siblingIndex(), getValue(child, null))
+        }
+
+        return actualOrderOfHeaderItems
     }
 }
 
