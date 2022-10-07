@@ -68,7 +68,7 @@ class HtmlReportWriter {
     private static String getSortedValueData(ReportItem item) {
         Set<String> raw = item.valueData
         List<String> list = new ArrayList<>(raw)
-        Collections.sort(list)
+        list = list.sort { it.size() }
         if (list.get(0) != "null") {
             return list.join("<br/>")
         } else {
