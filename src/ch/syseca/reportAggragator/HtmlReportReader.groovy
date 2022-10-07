@@ -21,7 +21,7 @@ class HtmlReportReader {
     static final Set<ReportItem> reportItems = new HashSet<>()
 
     static void read() throws IOException {
-        println "HtmlReportReader start"
+        echo "HtmlReportReader start"
         reportItems.removeAll(reportItems)
 
         File dir = new File(inputDirectory)

@@ -10,7 +10,7 @@ class ReportAggregator {
     static String outputFileParam = "licenses.html"
 
     static void createReport() throws Exception {
-        println "createReport start"
+        echo "createReport start"
         setUpHtmlReportReaderWriter()
         HtmlReportReader.read()
 
