@@ -1,8 +1,6 @@
 package ch.syseca.reportAggragator
 
-@Grapes([
-        @Grab('com.cloudbees:groovy-cps:1.24'),
-        @GrabExclude('xml-apis:xml-apis')])
+@Grab(group='org.ccil.cowan.tagsoup', module='tagsoup', version='1.2.1')
 import com.cloudbees.groovy.cps.NonCPS
 
 class ReportItem implements Comparable<ReportItem> {
