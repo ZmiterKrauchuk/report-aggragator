@@ -29,7 +29,7 @@ import java.util.stream.Collectors
             String absolutePath = dir.getAbsolutePath()
             Path input = Paths.get(absolutePath)
 
-            Files.find(input, 100, (path, attrs) -> path.endsWith(fileName)).forEach(file -> {
+            Files.find(input, 100, fileNameMatcher()).forEach(file -> {
 
                 try {
                     parseDependencies(readAsDocument(file))
@@ -37,6 +37,10 @@ import java.util.stream.Collectors
                     e.printStackTrace()
                 }
             })
+        }
+
+        private static Closure<Boolean> fileNameMatcher() {
+            (Path path) -> path.endsWith(fileName)
         }
 
         private static Document readAsDocument(Path path) throws IOException {
