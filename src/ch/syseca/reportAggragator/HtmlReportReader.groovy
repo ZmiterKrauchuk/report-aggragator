@@ -22,6 +22,7 @@ class HtmlReportReader {
     static String rootElementName
     static Set<String> excludedItems
     static final Set<ReportItem> reportItems = new HashSet<>()
+    ElementTraversal elementTraversal
 
     static void read() throws IOException {
         reportItems.removeAll(reportItems)
