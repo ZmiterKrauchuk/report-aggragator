@@ -9,8 +9,6 @@ import java.nio.charset.StandardCharsets
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
-import java.nio.file.attribute.BasicFileAttributes
-import java.util.function.BiPredicate
 
 class HtmlReportReader {
 
@@ -24,21 +22,15 @@ class HtmlReportReader {
 
         reportItems.removeAll(reportItems)
 
-        File dir = new File(inputDirectory)
-        String absolutePath = dir.getAbsolutePath()
-        Path input = Paths.get(absolutePath)
+        List<String> files = new FileNameByRegexFinder().getFileNames(inputDirectory, fileName)
 
-        Files.find(input, 100, fileNameMatcher()).each { file ->
-            try {
-                parseDependencies(readAsDocument(file))
-            } catch (Exception e) {
-                e.printStackTrace()
-            }
+        try {
+            for (String file in files)
+                parseDependencies(readAsDocument(Paths.get(file)))
+        } catch (Exception e) {
+            e.printStackTrace()
         }
-    }
 
-    private static BiPredicate<Path, BasicFileAttributes> fileNameMatcher() {
-        { path, attrs -> path.endsWith(fileName) }
     }
 
     private static Document readAsDocument(Path path) throws IOException {
