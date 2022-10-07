@@ -30,16 +30,16 @@ class HtmlReportReader {
         Path input = Paths.get(absolutePath)
 
         Files.find(input, 100, fileNameMatcher()).forEach({ file ->
-                try {
-                    parseDependencies(readAsDocument(file))
-                } catch (Exception e) {
-                    e.printStackTrace()
-                }
+            try {
+                parseDependencies(readAsDocument(file))
+            } catch (Exception e) {
+                e.printStackTrace()
+            }
         })
     }
 
     private static Closure<Boolean> fileNameMatcher() {
-        (Path path) -> path.endsWith(fileName)
+            (path, attrs) -> path.endsWith(fileName)
     }
 
     private static Document readAsDocument(Path path) throws IOException {
