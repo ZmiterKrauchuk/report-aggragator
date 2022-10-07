@@ -1,5 +1,8 @@
 package ch.syseca.reportAggragator
 
+@Grab('com.cloudbees:groovy-cps:1.24')
+import com.cloudbees.groovy.cps.NonCPS
+
 class ReportItem implements Comparable<ReportItem> {
 
     static Set<String> keyHeader = new LinkedHashSet<>()
@@ -50,6 +53,7 @@ class ReportItem implements Comparable<ReportItem> {
     }
 
     @Override
+    @NonCPS
     int hashCode() {
         return keyData.hashCode()
     }
