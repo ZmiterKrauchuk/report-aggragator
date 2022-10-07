@@ -55,7 +55,7 @@ class HtmlReportWriter {
     }
 
     private static void addAllItems(StringBuilder sb) {
-        getSortedReportItems().forEach(i -> addOneItem(i, sb))
+        getSortedReportItems().forEach({ i -> addOneItem(i, sb) })
     }
 
     private static void addOneItem(ReportItem item, StringBuilder sb) {
