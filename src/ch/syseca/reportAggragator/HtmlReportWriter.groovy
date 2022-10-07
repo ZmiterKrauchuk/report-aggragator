@@ -32,8 +32,11 @@ class HtmlReportWriter {
         String html = prepareDocument()
 
         File file = new File((outputFile))
-        try (PrintWriter out = new PrintWriter(file.getPath())) {
+        PrintWriter out = new PrintWriter(file.getPath())
+        try {
             out.println(html)
+        } finally {
+            out.close()
         }
     }
 
