@@ -28,7 +28,7 @@ class HtmlReportWriter {
     }
 
     static void write() throws FileNotFoundException {
-        echo "HtmlReportWriter start"
+
         String html = prepareDocument()
 
         File file = new File((outputFile))
