@@ -1,6 +1,7 @@
 package ch.syseca.reportAggragator
 
 @Grab('com.cloudbees:groovy-cps:1.24')
+@GrabExclude('xml-apis:xml-apis')
 import com.cloudbees.groovy.cps.NonCPS
 
 class ReportItem implements Comparable<ReportItem> {
