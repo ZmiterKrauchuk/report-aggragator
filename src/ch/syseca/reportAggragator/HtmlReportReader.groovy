@@ -6,7 +6,6 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
-import org.w3c.dom.ElementTraversal
 
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files
@@ -22,7 +21,6 @@ class HtmlReportReader {
     static String rootElementName
     static Set<String> excludedItems
     static final Set<ReportItem> reportItems = new HashSet<>()
-    ElementTraversal elementTraversal
 
     static void read() throws IOException {
         reportItems.removeAll(reportItems)
