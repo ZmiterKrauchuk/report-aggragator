@@ -73,7 +73,7 @@ class HtmlReportWriter {
         def list = []
         list.addAll(item.valueData)
         Comparator mc = {ob1, ob2 -> ob1 <=> ob2}
-        list = list.sort(mc)
+        list.sort(mc)
 
         if (list.get(0) != "null") {
             return list.join("<br/>")
