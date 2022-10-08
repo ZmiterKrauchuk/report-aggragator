@@ -1,4 +1,5 @@
 package ch.syseca.reportAggragator
+import com.cloudbees.groovy.cps.NonCPS
 
 class HtmlReportWriter {
 
@@ -21,6 +22,7 @@ class HtmlReportWriter {
 
     private static Set<ReportItem> reportItems = HtmlReportReader.reportItems
 
+    @NonCPS
     private static List<ReportItem> getSortedReportItems() {
         def list = []
         list.addAll(reportItems)
@@ -69,6 +71,7 @@ class HtmlReportWriter {
         }
     }
 
+    @NonCPS
     private static String getSortedValueData(ReportItem item) {
         def list = []
         list.addAll(item.valueData)
