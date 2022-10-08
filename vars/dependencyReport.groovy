@@ -24,5 +24,5 @@ static def setValueHeader(LinkedHashSet<String> set){
 
 static def setExcludedItemsParam(HashSet<String> set){
     ReportAggregator.excludedItemsParam.removeAll(ReportAggregator.excludedItemsParam)
-    ReportAggregator.valueHeaderParam.addAll(set)
+    ReportAggregator.excludedItemsParam.addAll(set)
 }
