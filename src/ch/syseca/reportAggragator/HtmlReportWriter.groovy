@@ -72,8 +72,8 @@ class HtmlReportWriter {
     private static String getSortedValueData(ReportItem item) {
         def list = []
         list.addAll(item.valueData)
-
-        list = list.sort()
+        Comparator mc = {ob1, ob2 -> ob1 <=> ob2}
+        list = list.sort(mc)
 
         if (list.get(0) != "null") {
             return list.join("<br/>")
